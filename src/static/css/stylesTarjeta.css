@@ -1,0 +1,119 @@
+@import url('colores.css');
+
+#tarjetas{
+    display: grid;
+    grid-template-rows: 50px 1fr; /* Establecer el número de filas */
+    grid-template-columns: 1fr; /* Establecer el número de columnas */
+    background-color: var(--color-secondary-2);
+    border-radius: 20px;
+    padding: 20px;
+    place-items: center; /* Centrar horizontal y verticalmente */
+}
+
+#tarjetas h2 {
+    grid-row: 1; /* Establecer la fila para el título */
+    place-items: center;
+}
+
+#tarjetas ul {
+    grid-row: 2; /* Establecer la fila para la lista */
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Mostrar las tarjetas en una sola columna */
+    gap: 30px; /* Aumentar el espacio entre elementos */
+    grid-auto-rows: 200px; /* Establecer el alto de la lista */
+    padding: 20px;
+}
+
+#tarjetas li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-background);
+    padding: 20px;
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: var(--shadow-md-white); /* Sombra más pronunciada */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#tarjetas li:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: var(--shadow-lg-white);
+}
+
+#tarjetas li i {
+    font-size: 48px; /* Iconos más grandes */
+    margin-bottom: 15px; /* Más espacio entre el icono y el texto */
+    color: var(--color-primary);
+}
+
+#tarjetas li h3 {
+    font-size: 20px; /* Títulos más grandes */
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+#tarjetas li p {
+    font-size: 14px; /* Texto más pequeño */
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 24px;
+    }
+
+    .section-description {
+        font-size: 18px;
+    }
+
+    .tarjeta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-card {
+        margin-bottom: 20px;
+    }
+
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .section-title {
+        font-size: 30px;
+    }
+
+    .section-description {
+        font-size: 20px;
+    }
+
+    .tarjeta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tarjeta-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1025px) {
+    .section-title {
+        font-size: 36px;
+    }
+
+    .section-description {
+        font-size: 24px;
+    }
+
+    .tarjeta-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tarjeta-card {
+        margin-bottom: 20px;
+    }
+}

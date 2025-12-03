@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/stylesPanel.css">
+    <link rel="stylesheet" href="../static/css/stylesSubpanel.css">
+    <link rel="stylesheet" href="../static/css/stylesTabla.css">
+    <link rel="stylesheet" href="../static/css/stylesModal.css">
+    <link rel="stylesheet" href="../static/css/stylesGrafica.css">
+
+</head>
+
+<body>
+
+    <header class="header-container">
+        <div class="header-logo">
+            <img src="../static/img/logo/white_on_trans.png" alt="Hotel Paraíso" class="logo">
+          </div>
+        <h1 onclick="mostrarGrafico()">Panel de Administración</h1>
+        <nav class="header-nav">
+            <ul>
+                <li> <i class="fas fa-users"></i> <a href="#" class="link" id="tablaUsuarios" onclick="mostrarUsuarios()">USUARIOS</a></li>
+                <li> <i class="fas fa-bed"></i> <a href="#" class="link" id="roomsTab" onclick="mostrarHabitaciones()">HABITACIONES</a></li>
+                <li> <i class="fas fa-bookmark"></i> <a href="#" class="link" id="reservationsTab" onclick="mostrarReservas()">RESERVAS</a></li>
+                <li> <i class="fas fa-sign-out-alt"></i> <a href="/logout" class="link">CERRAR SESIÓN</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de Gráfico -->
+    <div id="grafico" class="section" style="display: block;">
+        <h2>ESTADÍSTICAS</h2>
+        <!-- Gráfico de Usuarios por Rol -->
+        <div class="grafico-container">
+            <h3>Usuarios por Rol</h3>
+            <canvas id="usuariosPorRol" width="300" height="150"></canvas>
+        </div>
+
+        <!-- Gráfico de Habitaciones por Tipo -->
+        <div class="grafico-container">
+            <h3>Habitaciones por Tipo</h3>
+            <canvas id="habitacionesPorTipo" width="300" height="150"></canvas>
+        </div>
+
+        <!-- Gráfico de Habitaciones por Piso -->
+        <div class="grafico-container">
+            <h3>Habitaciones por Piso</h3>
+            <canvas id="habitacionesPorPiso" width="300" height="150"></canvas>
+        </div>
+
+        <!-- Gráfico de Habitaciones por Método de Pago -->
+        <div class="grafico-container">
+            <h3>Habitaciones por Método de Pago</h3>
+            <canvas id="habitacionesPorMetodoPago" width="300" height="150"></canvas>
+        </div>
+
+        <!-- Gráfico de Habitaciones Reservadas al Mes -->
+        <div class="grafico-container">
+            <h3>Habitaciones Reservadas al Mes</h3>
+            <canvas id="habitacionesReservadasAlMes" width="300" height="150"></canvas>
+        </div>
+
+        <!-- Gráfico de Estado de las Habitaciones -->
+        <div class="grafico-container">
+            <h3>Estado de las Habitaciones</h3>
+            <canvas id="habitacionesEstado" width="300" height="150"></canvas>
+        </div>
+    </div>
+
+
+    <!--SECCION DE USUARIOS-->
+    <div id="usuarios" class="usuarios-section" style="display: none;">
+        <h2>USUARIOS</h2>
+
+        <div class="d-flex align-items-center mb-3">
+            <button id="openModal" class="btn btn-primary mr-3" onclick="openModal()">Crear Nuevo Usuario</button>
+
+            <form id="searchUserForm" onsubmit="filterUsers(event)">
+                <div class="form-group">
+                    <label for="searchDocumento">Número de Documento:</label>
+                    <input type="number" id="searchDocumento" name="documento" class="form-control"
+                        placeholder="Buscar por número de documento...">
+                </div>
+                <div class="form-group">
+                    <label for="searchRol">Rol:</label>
+                    <select id="searchRol" name="rol" class="form-control">
+                        <option value="">Seleccione un rol</option>
+                        <option value="administrador">Administrador</option>
+                        <option value="empleado">Empleado</option>
+                        <option value="cliente">Cliente</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Número de Documento</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Contraseña</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="usuariosTablaCuerpo">
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.apellido }}</td>
+                    <td>{{ usuario.numero_documento }}</td>
+                    <td>{{ usuario.fecha_nacimiento }}</td>
+                    <td>{{ usuario.telefono }}</td>
+                    <td>{{ usuario.correo }}</td>
+                    <td>{{ usuario.contrasena }}</td>
+                    <td>{{ usuario.rol }}</td>
+                    <td>
+                        <button class="btn btn-warning"
+                            onclick="openEditModal({{ usuario.id }}, '{{ usuario.nombre }}', '{{ usuario.apellido }}', '{{ usuario.numero_documento }}', '{{ usuario.fecha_nacimiento }}', '{{ usuario.telefono }}', '{{ usuario.correo }}', '{{ usuario.rol }}')">Modificar
+                        </button>
+                        <button class="btn btn-danger" onclick="confirmDeleteUser ({{ usuario.id }})">Eliminar</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!--FIN SECCION DE USUARIOS-->
+
+    <!--INICIO SECCION DE HABITACIONES-->
+    <div id="habitaciones" class="habitaciones-section" style="display: none;">
+        <h2>HABITACIONES</h2>
+        <div class="d-flex align-items-center mb-3">
+            <!-- Botón para agregar habitación -->
+            <button class="btn btn-primary mr-3" onclick="openAddRoomModal()">Agregar Habitación</button>
+
+            <form id="searchRoomForm" onsubmit="filterRooms(event)">
+                <div class="form-group">
+                    <label for="searchTipo">Tipo:</label>
+                    <select id="searchTipo" name="tipo" class="form-control">
+                        <option value="">Seleccione un tipo</option>
+                        <option value="Individual">Individual</option>
+                        <option value="Doble">Doble</option>
+                        <option value="Suite">Suite</option>
+                        <option value="Familiar">Familiar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchEstado">Estado:</label>
+                    <select id="searchEstado" name="estado" class="form-control">
+                        <option value="">Seleccione un estado</option>
+                        <option value="Disponible">Disponible</option>
+                        <option value="Ocupada">Ocupada</option>
+                        <option value="Mantenimiento">Mantenimiento</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Número de Habitación</th>
+                    <th>Tipo</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="habitacionesTablaCuerpo">
+                {% for habitacion in habitaciones %}
+                <tr>
+                    <td>{{ habitacion.id }}</td>
+                    <td>{{ habitacion.numero }}</td>
+                    <td>{{ habitacion.tipo }}</td>
+                    <td>${{ habitacion.precio }}</td>
+                    <td>{{ habitacion.estado }}</td>
+                    <td>{{ habitacion.descripcion }}</td>
+                    <td><img src="{{ url_for('static', filename=habitacion.imagen) }}" alt="{{ habitacion.tipo }}"
+                            style="width: 100px; height: auto;"></td>
+                    <td>
+                        <button class="btn btn-warning"
+                            onclick="openEditRoomModal({{habitacion.id}}, '{{habitacion.numero}}', '{{habitacion.tipo}}', {{habitacion.precio}}, '{{habitacion.estado}}', '{{habitacion.descripcion}}')">Modificar</button>
+                        <button class="btn btn-danger" onclick="confirmDeleteRoom({{habitacion.id}})">Eliminar</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!--FIN SECCION DE HABITACIONES-->
+
+    <!--INICIO SECCION DE RESERVAS-->
+    <!-- INICIO SECCION DE RESERVAS -->
+    <div id="reservas" class="reservas-section" style="display: none;">
+        <h2>RESERVAS</h2>
+        <div class="d-flex align-items-center mb-3">
+            <!-- Botón para agregar reserva (opcional) -->
+            <button class="btn btn-primary mr-3" onclick="openAddReservaModal()">Agregar Reserva</button>
+
+            <!-- Formulario de búsqueda de reservas -->
+            <form id="searchReservaForm" onsubmit="filterReservas(event)">
+                <div class="form-group">
+                    <label for="searchCliente">Cliente:</label>
+                    <input type="text" id="searchCliente" name="cliente" class="form-control"
+                        placeholder="Buscar por cliente...">
+                </div>
+                <div class="form-group">
+                    <label for="searchHabitacion">Número de Habitación:</label>
+                    <input type="number" id="searchHabitacion" name="habitacion" class="form-control"
+                        placeholder="Buscar por número de habitación...">
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+
+        <!-- Tabla de reservas -->
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Número de Habitación</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Valor por Día</th>
+                    <th>Valor Total</th>
+                    <th>Método de Pago</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="reservasTablaCuerpo">
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.id }}</td>
+                    <td>{{ reserva.nombre }} {{ reserva.apellido }}</td>
+                    <td>{{ reserva.numero_habitacion }}</td>
+                    <td>{{ reserva.fecha_inicio }}</td>
+                    <td>{{ reserva.fecha_fin }}</td>
+                    <td>${{ reserva.valor_dia }}</td>
+                    <td>${{ reserva.valor_total }}</td>
+                    <td>{{ reserva.metodo_pago }}</td>
+                    <td>
+                        <button class="btn btn-success" onclick="generarFactura({{ reserva.id }})">Factura</button>
+                        <button class="btn btn-warning"
+                            onclick="openEditReservaModal({{ reserva.id }}, '{{ reserva.nombre }}', '{{ reserva.apellido }}', '{{ reserva.numero_habitacion }}', '{{ reserva.fecha_inicio }}', '{{ reserva.fecha_fin }}', {{ reserva.valor_dia }}, '{{ reserva.metodo_pago }}')">Modificar</button>
+                        <button class="btn btn-danger"
+                            onclick="confirmDeleteReserva({{ reserva.id }})">Eliminar</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- FIN SECCION DE RESERVAS -->
+
+
+
+    <!-- TODOS LOS MODALS -->
+
+    <!-- Modal para Crear Nuevo Usuario -->
+    <div id="createUser Modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Crear Nuevo Usuario</h5>
+                    <button type="button" class="close" onclick="closeModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="createUser Form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" id="apellido" name="apellido" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="numero_documento">Número de Documento:</label>
+                            <input type="text" id="numero_documento" name="numero_documento" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="text" id="telefono" name="telefono" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo:</label>
+                            <input type="email" id="correo" name="correo" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contrasena">Contraseña:</label>
+                            <input type="password" id="contrasena" name="contrasena" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rol">Rol de Usuario:</label>
+                            <select id="rol" name="rol" class="form-control" required>
+                                <option value="">Seleccione un rol</option>
+                                <option value="administrador">Administrador</option>
+                                <option value="empleado">Empleado</option>
+                                <option value="cliente">Cliente</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Modificar Usuario -->
+    <div id="editUser Modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modificar Usuario</h5>
+                    <button type="button" class="close" onclick="closeEditModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editUser Form">
+                        <input type="hidden" id="editUser Id" name="id">
+                        <div class="form-group">
+                            <label for="editNombre">Nombre:</label>
+                            <input type="text" id="editNombre" name="nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editApellido">Apellido:</label>
+                            <input type="text" id="editApellido" name="apellido" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editNumeroDocumento">Número de Documento:</label>
+                            <input type="text" id="editNumeroDocumento" name="numero_documento" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editFechaNacimiento">Fecha de Nacimiento:</label>
+                            <input type="date" id="editFechaNacimiento" name="fecha_nacimiento" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editTelefono">Teléfono:</label>
+                            <input type="text" id="editTelefono" name="telefono" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editCorreo">Correo:</label>
+                            <input type="email" id="editCorreo" name="correo" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editRol">Rol de Usuario:</label>
+                            <select id="editRol" name="rol" class="form-control" required>
+                                <option value="administrador">Administrador</option>
+                                <option value="empleado">Empleado</option>
+                                <option value="cliente">Cliente</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Modificar Usuario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar Nueva Habitación -->
+    <div id="addRoomModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Nueva Habitación</h5>
+                    <button type="button" class="close" onclick="closeAddRoomModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addRoomForm">
+                        <div class="form-group">
+                            <label for="numero">Número de Habitación:</label>
+                            <input type="text" id="numero" name="numero" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo">Tipo:</label>
+                            <select id="tipo" name="tipo" class="form-control" required>
+                                <option value="">Seleccione un tipo</option>
+                                <option value="Individual">Individual</option>
+                                <option value="Doble">Doble</option>
+                                <option value="Suite">Suite</option>
+                                <option value="Familiar">Familiar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Precio:</label>
+                            <input type="number" id="precio" name="precio" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado:</label>
+                            <select id="estado" name="estado" class="form-control" required>
+                                <option value="">Seleccione un estado</option>
+                                <option value="Disponible">Disponible</option>
+                                <option value="Ocupada">Ocupada</option>
+                                <option value="Mantenimiento">Mantenimiento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción:</label>
+                            <textarea id="descripcion" name="descripcion" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagen">Seleccionar Imagen:</label>
+                            <input type="file" id="imagen" name="imagen" class="form-control" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Agregar Habitación</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Habitación -->
+    <div id="editRoomModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Habitación</h5>
+                    <button type="button" class="close" onclick="closeEditRoomModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editRoomForm">
+                        <input type="hidden" id="editRoomId" name="id">
+                        <!-- Campo oculto para el ID de la habitación -->
+                        <div class="form-group">
+                            <label for="editNumero">Número de Habitación:</label>
+                            <input type="text" id="editNumero" name="numero" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editTipo">Tipo:</label>
+                            <select id="editTipo" name="tipo" class="form-control" required>
+                                <option value="Individual">Individual</option>
+                                <option value="Doble">Doble</option>
+                                <option value="Suite">Suite</option>
+                                <option value="Familiar">Familiar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPrecio">Precio:</label>
+                            <input type="number" id="editPrecio" name="precio" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editEstado">Estado:</label>
+                            <select id="editEstado" name="estado" class="form-control" required>
+                                <option value="Disponible">Disponible</option>
+                                <option value="Ocupada">Ocupada</option>
+                                <option value="Mantenimiento">Mantenimiento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editDescripcion">Descripción:</label>
+                            <textarea id="editDescripcion" name="descripcion" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editImagen">Seleccionar Imagen (opcional):</label>
+                            <input type="file" id="editImagen" name="imagen" class="form-control" accept="image/*">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../static/js/modalUsuario.js"></script>
+    <script src="../static/js/modalHabitacion.js"></script>
+    <script src="../static/js/modalReserva.js"></script>
+    <script src="../static/js/modalFactura.js"></script>
+
+    <script src="../static/js/scriptPanel.js"></script>
+    <script src="../static/js/scriptGrafica.js"></script>
+
+
+    <!--GRAFICAS-->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Asegúrate de incluir Chart.js -->
+    <script src="../static/js/scriptGrafica.js"></script> <!-- Enlace al script de la gráfica -->
+
+    <!-- Script para obtener los datos de las gráficas -->
+    <script>
+        fetch('/graficas')
+            .then(response => response.json())
+            .then(data => {
+                // Pasar los datos a la función initializeChart
+                initializeChart(data.usuarios_por_rol, data.habitaciones_por_tipo, data.habitaciones_por_piso,
+                    data.habitaciones_por_metodo_pago, data.habitaciones_reservadas_al_mes,
+                    data.habitaciones_disponibles, data.habitaciones_ocupadas, data.habitaciones_en_mantenimiento);
+            });
+    </script>
+</body>
+
+</html>

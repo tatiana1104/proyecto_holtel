@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión / Registro</title>
+    
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/stylesLogin.css"> <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="../static/css/stylesReloj.css">
+
+</head>
+<body>
+    <section>
+
+        <!-- Agregar el reloj en la parte superior izquierda -->
+        <div id="time">
+            <div class="circle">
+                <div class="dots sec_dot"></div>
+                <svg>
+                    <circle cx="120" cy="120" r="120" id="ss"></circle>
+                </svg>
+            </div>
+            <div class="circle">
+                <div class="dots min_dot"></div>
+                <svg>
+                    <circle cx="100" cy="100" r="100" id="mm"></circle>
+                </svg>
+            </div>
+            <div class="circle">
+                <div class="dots hr_dot"></div>
+                <svg>
+                    <circle cx="80" cy="80" r="80" id="hh"></circle>
+                </svg>
+            </div>
+            <div class="timeBx">
+                <div id="hours">00</div>
+                <div id="minutes">00</div>
+                <div id="seconds">00</div>
+                <div class="ap"><div id="ampm">AM</div></div>
+            </div>
+        </div>
+
+
+
+        <div class="box">
+        
+            <!-- Formulario de inicio de sesión -->
+            <div class="login">
+                
+                <form method="POST" action="/iniciar_sesion" class="loginBx">
+                    <h2>Iniciar Sesión <i class="fa fa-lock"></i></h2>
+                    
+                    <input type="email" name="correo" placeholder="Correo Electronico" required>
+                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    <!--<button type="submit">Iniciar Sesión</button>-->
+                    <input type="submit" value="Entrar">
+                    <div class="group">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                        <a href="#" onclick="showRegisterForm()">Regístrate</a>
+                    </div>
+                </form>
+            </div>
+    
+            <!-- Formulario de registro -->
+            <div class="register" style="display:none;">
+                <form method="POST" action="/register" class="registerBx">
+                    <h2>Registrarse <i class="fa fa-user-plus"></i></h2>
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="text" name="apellido" placeholder="Apellido" required>
+                    <input type="number" name="numero_documento" placeholder="Numero de Documento" required>
+                    <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" required>
+                    <input type="text" name="telefono" placeholder="telefono" required>
+                    <input type="email" name="correo" placeholder="Correo Electronico" required>
+                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    <button type="submit">Registrar</button>
+                    <div class="group">
+                        <a>¿Ya tienes cuenta?</a>
+                        <a href="#" onclick="showLoginForm()">Iniciar sesión</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+       
+    </section>
+
+    <script src="../static/js/scriptLogin.js"></script> <!-- Enlace al archivo JavaScript -->
+    <script src="../static/js/scriptReloj.js"></script>
+</body>
+</html>

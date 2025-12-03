@@ -1,0 +1,85 @@
+@import url(colores.css);
+
+.modal {
+    
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed; /* Mantener el modal en la misma posición */
+    z-index: 1; /* En la parte superior */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Habilitar desplazamiento si es necesario */
+    background-color: var(--color-tertiary-1); /* Fondo negro con opacidad */
+}
+
+.close {
+    background-color: transparent; /* Fondo transparente */
+    color: var(--color-text-inverse); /* Color del texto (el símbolo ×) */
+    border: none; /* Sin borde */
+    font-size: 30px; /* Ajusta el tamaño de la fuente si es necesario */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.close:hover {
+    color: var(--color-text-inverse); /* Color blanco con un poco de opacidad al pasar el mouse */
+}
+
+.modal-backdrop {
+    z-index: -1;
+}
+
+.modal-header{
+    background-color: var(--color-dark);
+}
+
+.modal-title{
+    color: var(--color-text-inverse);
+    text-transform: uppercase;
+}
+
+.modal-dialog {
+    margin-top: 200px; /* Ajusta este valor según sea necesario */
+    margin: 15% auto; /* Centrar el modal verticalmente */
+}
+
+.modal-content {
+    background-color: #fff; 
+    margin: 15% auto; 
+    padding: 20px; 
+    border: 1px solid #888; 
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.modal-header, .modal-body {
+    padding: 20px; /* Espaciado interno */
+    font-size: 18px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el label y el input */
+    margin-bottom: 15px; /* Espaciado entre los grupos */
+}
+
+.form-group label {
+    margin-right: 10px; /* Espacio entre el label y el input */
+    width: 150px; /* Ajusta el ancho del label según sea necesario */
+}
+
+.btn-reserva{
+    background-color: var(--color-success);
+    color: var(--color-text-inverse);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-reserva:hover {
+    background-color: var(--color-success);
+    box-shadow: inset 0 0 10px var(--color-success), 0 0 15px var(--color-success);
+}

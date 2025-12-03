@@ -1,0 +1,222 @@
+/* Estilo base */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('colores.css');
+
+/* Centrado de la página */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;  /* Oculta el contenido que sobrepasa los límites del cuerpo */
+}
+
+/* Definición de la propiedad personalizada */
+@property --a {
+  syntax: '<angle>'; /* Establece la sintaxis de la propiedad como un ángulo */
+  inherits: false; /* No hereda valores de sus elementos padre */
+  initial-value: 0deg; /* Establece el valor inicial en 0 grados */
+}
+
+/* Caja principal */
+.box {
+  position: relative; 
+  width: 525px; 
+  height: 200px; 
+  background: repeating-conic-gradient(from var(--a), /* Establece el fondo como un gradiente conico que se repite */
+      var( --color-primary-dark) 0%, /* Establece el color primario oscuro en el 0% */
+      var( --color-primary-dark) 5%, /* Establece el color primario oscuro en el 5% */
+      transparent 5%, /* Establece la transparencia en el 5% */
+      transparent 40%, /* Establece la transparencia en el 40% */
+      var( --color-primary-dark) 50%); /* Establece el color primario oscuro en el 50% */
+  filter: drop-shadow(0 15px 50px var(--color-primary-light)); /* Establece un efecto de sombra */
+  border-radius: 20px; /* Establece el radio de esquina en 20px */
+  animation: rotating 4s linear infinite; /* Establece la animación de rotación */
+  display: flex; /* Establece el contenedor como flexible */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  transition: height 0.5s; /* Establece la transición en 0.5 segundos */
+}
+
+/* Define la animación de rotación */
+@keyframes rotating {
+  0% {
+    --a: 0deg; /* Comienza la rotación en 0 grados */
+  }
+  100% {
+    --a: 360deg; /* Termina la rotación en 360 grados */ 
+  }
+}
+
+/* crear un borde decorativo */
+.box::before {
+  content: ''; /* Contenido vacío para el pseudo-elemento */
+  position: absolute; /* Posición absoluta para cubrir la caja */
+  width: 100%; /* Ancho del 100% de la caja */
+  height: 100%; /* Alto del 100% de la caja */
+  background: repeating-conic-gradient(from var(--a), /* Fondo como un gradiente conico que se repite */
+  var( --color-primary-dark) 0%, /* Color primario oscuro en el 0% */
+  var( --color-primary-dark) 5%, /* Color primario oscuro en el 5% */
+      transparent 5%, /* Transparente en el 5% */
+      transparent 40%, /* Transparente en el 40% */
+      var( --color-primary-dark) 50%); /* Color primario oscuro en el 50% */
+  filter: drop-shadow(0 15px 50px var(--color-primary-light)); /* Efecto de sombra */
+  border-radius: 20px; /* Radio de esquina de 20px */
+  animation: rotating 4s linear infinite; /* Animación de rotación */
+  animation-delay: -1s; /* Retraso de 1 segundo en la animación */
+}
+
+/* Crear un fondo interno */
+.box::after {
+  content: ''; /* Contenido vacío para el pseudo-elemento */
+  position: absolute; /* Posición absoluta para el fondo interno */
+  inset: 4px; /* Ajusta el fondo interno a 4px de los bordes */
+  background: var(--color-primary); /* Fondo con el color primario */
+  border-radius: 15px; /* Radio de esquina de 15px */
+  border: 8px solid var(--color-border); /* Borde de 8px con color de borde */
+  display: flex; /* Contenedor flexible */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+
+
+/* Estilos aplicados al pasar el mouse sobre la caja */
+.box:hover {
+  width: 525px;
+  height: 450px;
+}
+
+/* Cambia la posición del formulario*/
+.box:hover .login, .box:hover .register {
+  inset: 40px;
+}
+
+/* Restablece la posición vertical */
+.box:hover .loginBx, .box:hover .registerBx {
+  transform: translateY(0px);
+}
+
+/* Estilos para el formulario de login y registro */
+.login, .register {
+  position: absolute; /* Posición absoluta para los formularios */
+  inset: 60px; /* Ajusta la posición a 60px de los bordes */
+  display: flex; /* Contenedor flexible */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  border-radius: 10px; /* Radio de esquina de 10px */
+  color: var(--color-text-inverse); /* Color de texto inverso */
+  z-index: 2;  /* Asegura que el login esté encima inicialmente */
+  box-shadow: inset 0 10px 20px var(--color-secondary); /* Sombra interna */
+  border-bottom: 2px solid var(--color-background); /* Borde inferior de 2px */
+  transition: 0.5s; /* Transición de 0.5 segundos */
+  overflow: hidden; /* Oculta el contenido que sobrepasa los límites */
+}
+
+.register {
+  display: none; /* Mantener oculto inicialmente */
+}
+
+/* Aumentar el tamaño de la caja cuando el formulario de registro está visible */
+.box.register-visible {
+  width: 485px; /* Nuevo ancho cuando el registro está visible */
+  height: 200px; /* Nueva altura cuando el registro está visible */
+
+}
+
+/* Estilos aplicados al pasar el mouse sobre la caja */
+.box.register-visible:hover {
+  width: 450px;
+  height: 750px;
+  
+}
+
+/* Estilos para las cajas de login y registro */
+.loginBx, .registerBx {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  width: 70%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.loginBx{
+  transform: translateY(170%);
+}
+
+.registerBx{
+  transform: translateY(380%);
+}
+
+
+/* Estilos para el encabezado */
+h2 {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.2em;
+}
+
+/* Estilos para el ícono dentro del encabezado */
+h2 i {
+  color: var(--color-background); /* Color del ícono */
+  text-shadow: 0 0 5px var(--color-background), 0 0 20px var(--color-background);
+}
+
+/* Estilos para los campos de entrada */
+input, button {
+  width: 100%;
+  padding: 10px 20px;
+  outline: none; /* No muestra el borde */
+  border: none; /* No muestra el borde */
+  font-size: 1em;
+  color: var(--color-text-inverse);
+  background: var(--color-primary-dark);
+  border: 2px solid var(--color-border);
+  border-radius: 30px;
+}
+
+/* Estilos para el placeholder de los campos de entrada */
+input::placeholder {
+  color: var(--color-text-inverse);
+  /*text-transform: uppercase;*/
+}
+
+/* Estilos para el botón de envío */
+input[type="submit"], button[type="submit"] {
+  background: var(--color-success);
+  border: none;
+  font-weight: 500;
+  color: var(--color-text-inverse);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/* Efecto al pasar el mouse sobre el botón de envío */
+input[type="submit"]:hover, button[type="submit"]:hover {
+  box-shadow: inset 0 0 10px var(--color-success), 0 0 60px var(--color-success);
+}
+
+/* Estilos para los enlaces */
+.group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Estilos para los enlaces individuales */
+.group a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Estilos para el segundo enlace */
+.group a:nth-child(2) {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+

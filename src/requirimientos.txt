@@ -1,0 +1,10 @@
+# Crear un entorno virtual
+py -3 -m venv .venv
+
+Set-ExecutionPolicy –Scope Process –ExecutionPolicy Bypass
+
+# Activar el entorno virtual
+.venv/Scripts/activate
+
+# Instalar las extensiones necesarias
+pip install flask mysql-connector Flask-Uploads

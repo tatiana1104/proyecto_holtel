@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Paraíso - Luxury Experience</title>
+    
+    <link rel="stylesheet" href="../static/css/styles.css"> <!--ESTILO GENERAL-->
+    <link rel="stylesheet" href="../static/css/stylesPanel.css"> <!--ESTILO GENERAL-->
+
+    <link rel="stylesheet" href="../static/css/stylesIndex.css">
+    <link rel="stylesheet" href="../static/css/stylesCarrusel.css"> <!--ESTILO PARA EL CARRUSEL-->
+    <link rel="stylesheet" href="../static/css/stylesFooter.css"> <!--ESTILO PIE DE PAGINA-->
+    <link rel="stylesheet" href="../static/css/stylesTarjeta.css"> <!--ESTILO DE TARJETAS-->
+    <link rel="stylesheet" href="../static/css/stylesEvento.css"> <!--ESTILO DE EVENTOS-->
+    <link rel="stylesheet" href="../static/css/stylesForm.css">
+    <link rel="stylesheet" href="../static/css/stylesReloj.css">
+
+    
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="../static/img/logo/white_on_trans.png" alt="Hotel Paraíso" class="logo">
+            </div>
+
+            <nav class="header-nav">
+                <ul>
+                    <li> <i class="fas fa-home"></i> <a href="#inicio">Inicio</a></li>
+                    <li> <i class="fas fa-bed"></i> <a href="#habitaciones">Habitaciones</a></li>
+                    <li> <i class="fas fa-star"></i> <a href="#tarjetas">Servicios</a></li>
+                    <li> <i class="fas fa-calendar"></i> <a href="#eventos">Eventos</a></li>
+                    <li> <i class="fas fa-comment"></i> <a href="#contacto">Contacto</a></li>
+                    
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <i class="fas fa-user-circle"></i>
+                <button class="start-btn" onclick="location.href='{{ url_for('iniciar_sesion') }}'">Mi cuenta</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero" >
+            <div class="hero-content">
+                <h1>Bienvenido al Lujo</h1>
+                <p>Una experiencia única en el corazón del paraíso</p>
+                <p>El Hotel Paraíso es un resort de lujo que fusiona el estilo clásico con toques modernos, creando un ambiente relajado y acogedor para sus huéspedes. Ofrece un refugio exclusivo tanto para quienes buscan descansar como para los que desean disfrutar de actividades acuáticas y de aventura en la zona.</p>
+                    <p>Se encuentra en el encantador destino turístico de Playa Bella, a tan solo 15 minutos en coche del aeropuerto internacional y a pocos pasos de la arena blanca de la playa. Rodeado de exuberante vegetación y vistas panorámicas al mar, es el lugar ideal para disfrutar de un descanso único en un entorno natural y tranquilo.</p>
+            </div>
+        </section>
+
+        <section id="habitaciones">
+            <h2 class="section-title">  <i class="fa fa-door-open"> </i>    Nuestras Habitaciones   <i class="fa fa-door-closed"></i></h2>
+            <div class="carrusel-container">
+                <div class="carrusel">
+                    <div class="carrusel-item">
+                        <img src="../static/img/habitaciones/imagen1.jpg" alt="Habitación Estándar" class="carrusel-imagen">
+                        <div class="carrusel-descripcion">
+                            <h2>Habitación Individual</h2>
+                            <p>Espacio diseñado para una sola persona, con cama individual, mobiliario básico y comodidades esenciales para una estancia cómoda y funcional.</p>
+                            <ul>
+                                <li> <i class="fas fa-wifi"></i> Wi-Fi gratis</li>
+                                <li> <i class="fas fa-tv"></i> TV de pantalla plana</li>
+                                <li> <i class="fas fa-snowflake"></i> Aire acondicionado</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="carrusel-item">
+                        <img src="../static/img/habitaciones/imagen2.jpg" alt="Habitacion Doble" class="carrusel-imagen">
+                        <div class="carrusel-descripcion">
+                            <h2>Habitación Doble</h2>
+                            <p>Cuenta con una cama doble o dos camas individuales, ideal para dos personas. Ofrece mayor espacio y confort, con las comodidades necesarias para el descanso.</p>
+                            <ul>
+                                <li> <i class="fas fa-wifi"></i> Wi-Fi gratis</li>
+                                <li> <i class="fas fa-tv"></i> TV de pantalla plana</li>
+                                <li> <i class="fas fa-snowflake"></i> Aire acondicionado</li>
+                                <li> <i class="fas fa-cocktail"></i> Minibar</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="carrusel-item">
+                        <img src="../static/img/habitaciones/imagen3.jpg" alt="Suite de Lujo" class="carrusel-imagen">
+                        <div class="carrusel-descripcion">
+                            <h2>Suite de Lujo</h2>
+                            <p>Habitación amplia y elegante, equipada con muebles de alta gama, sala de estar, baño de lujo y a menudo con servicios exclusivos como vistas panorámicas, jacuzzi o acceso a un servicio personalizado.</p>
+                            <ul>
+                                <li> <i class="fas fa-wifi"></i> Wi-Fi alta velocidad</li>
+                                <li> <i class="fas fa-tv"></i> TV de pantalla plana</li>
+                                <li> <i class="fas fa-snowflake"></i> Aire acondicionado</li>
+                                <li> <i class="fas fa-hot-tub"></i> Jacuzzi </li>
+                                <li> <i class="fas fa-key"></i> </i> Botones privado </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="carrusel-item">
+                        <img src="../static/img/habitaciones/image4.jpg" alt="Habitacion Familiar" class="carrusel-imagen">
+                        <div class="carrusel-descripcion">
+                            <h2>Habitación familiar</h2>
+                            <p>Habitación amplia y adaptada para acomodar a familias, generalmente con varias camas o literas, y un ambiente cómodo y funcional para niños y adultos, ofreciendo más espacio y comodidad.</p>
+                            <ul>
+                                <li> <i class="fas fa-wifi"></i> Wi-Fi gratis</li>
+                                <li> <i class="fas fa-tv"></i> TV de pantalla plana</li>
+                                <li> <i class="fas fa-snowflake"></i> Aire acondicionado</li>
+                                <li> <i class="fas fa-kitchen-set"></i> Cocina</li>
+                                <li> <i class="fas fa-baby-carriage"></i> Carruaje para bebe</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrusel-boton carrusel-boton-izquierda" aria-label="Imagen anterior">&lt;</button>
+                <button class="carrusel-boton carrusel-boton-derecha" aria-label="Siguiente imagen">&gt;</button>
+            </div>
+        </section>
+
+        <section id="tarjetas">
+            <h2 class="section-title"><i class="fa fa-star"> </i>   Servicios Exclusivos    <i class="fa fa-star"></i></h2>
+            <ul class="tarjetas-grid">
+                <li>
+                    <i class="fas fa-swimming-pool"></i>
+                    <h3>Piscina</h3>
+                    <p>Con vista al océano</p>
+                </li>
+                <li>
+                    <i class="fas fa-utensils"></i>
+                    <h3>Restaurante Gourmet</h3>
+                    <p>Cocina internacional</p>
+                </li>
+                <li>
+                    <i class="fas fa-spa"></i>
+                    <h3>Spa & Wellness</h3>
+                    <p>Tratamientos exclusivos</p>
+                </li>
+                <li>
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Gimnasio</h3>
+                    <p>Equipamiento de última generación</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="eventos">
+            <h2 class="section-title"> <i class="fa fa-ticket"> </i>    Eventos <i class="fa fa-ticket"> </i></h2>
+            <div class="eventos-grid">
+                <div class="evento-card">
+                    <img src="https://th.bing.com/th/id/OIP.p4c2vmKNk-hoyef0Pow1OwHaFj?pid=ImgDet&w=474&h=355&rs=1" alt="Evento 1">
+                    <div class="evento-info">
+                        <h3>Noche de Vino y Jazz <i class="fa fa-music"></i></h3>
+                        <p class="evento-fecha">25 de Octubre, 2023</p>
+                        <p class="evento-descripcion">Disfruta de una noche relajante con los mejores vinos y música en vivo.</p>
+                        <a href="#" class="evento-btn">Más Información</a>
+                    </div>
+                </div>
+                <div class="evento-card">
+                    <img src="https://th.bing.com/th/id/R.8ab957551ef278f9a0861e11c29a5733?rik=T6MCZVWnTcwDOQ&pid=ImgRaw&r=0" alt="Evento 2">
+                    <div class="evento-info">
+                        <h3>Cena Gourmet <i class="fa fa-utensils"></i></h3>
+                        <p class="evento-fecha">30 de Octubre, 2023 </p>
+                        <p class="evento-descripcion">Una experiencia culinaria única con platos preparados por chefs internacionales.</p>
+                        <a href="#" class="evento-btn">Más Información</a>
+                    </div>
+                </div>
+                <div class="evento-card">
+                    <img src="https://th.bing.com/th/id/R.3a584cbe0a2c130eb3baa40d669533b9?rik=PQvNOMtyR5P%2bhg&pid=ImgRaw&r=0" alt="Evento 3">
+                    <div class="evento-info">
+                        <h3>Taller de Yoga <i class="fa fa-om"></i></h3>
+                        <p class="evento-fecha">5 de Noviembre, 2023 </p>
+                        <p class="evento-descripcion">Relájate y recarga energías con nuestro taller de yoga al amanecer.</p>
+                        <a href="#" class="evento-btn">Más Información</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2 class="section-title"><i class="fa-regular fa-comments"></i> Contacto <i class="fa-regular fa-comments"></i> </h2>
+            <form>
+                <div class="input-group">
+                    <i class="far fa-id-card"></i>
+                    <input type="text" placeholder="Nombre" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-regular fa-at"></i>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="far fa-comment"></i> 
+                    <textarea placeholder="Mensaje" required></textarea>
+                </div>
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Nuestra Dirección</h3>
+                <p>Av. del Sol, #123, Playa Bella</p>
+                <p>C.P. 45678, Costa del Mar</p>
+                <p>México</p>
+            </div>
+            <div class="footer-column">
+                <h3>Reservaciones</h3>
+                <p>Teléfono: +1 800-987-6543</p>
+                <p>Email: reservas@hotelparaiso.com</p>
+            </div>
+            <div class="footer-column">
+                <h3>Redes Sociales</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    
+                    <a href="https://www.facebook.com" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    
+                    <a href="https://www.twitter.com" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hotel Paraíso. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../static/js/scriptCarrusel.js"></script>
+    <script src="../static/js/scriptReloj.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+CONECTAR MEDIANTE CDM A LA BD DE XAMPP
+
+1- entrar a la carpeta
+cd C:\xampp\mysql\bin
+
+2-iniciar seccion
+mysql -u root -p
+
+3-buscar la BD que desea
+USE base_datos;
+
+4- usuarios
+select correo, contrasena, rol from usuarios;

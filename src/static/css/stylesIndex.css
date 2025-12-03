@@ -1,0 +1,166 @@
+@import url('colores.css');
+
+section{
+    margin-bottom: 20px;
+    width: 100%;
+    height: 700px;
+}
+
+.hero {
+    background-image: url('../img/giphy.gif');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Asegura que el contenido esté en la parte inferior */
+    transition: background-image 0.5s ease-in-out;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.hero-content {
+    background-color: var(--color-dark-2);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+
+.hero h1 {
+    font-size: 20px;
+}
+
+.hero p {
+    font-size: 15px;
+    color: var(--color-text-inverse);
+}
+
+main {
+    padding: 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#hotel{
+    background-color: black;
+    border-radius: 20px; 
+}
+
+
+#hotel div{
+    color: white;
+    padding: 10px;
+    text-align: justify;
+}
+
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-logo {
+        margin-bottom: 20px;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-nav li {
+        margin-bottom: 20px;
+    }
+
+    .header-buttons {
+        margin-top: 20px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}
+
+
+/* Estilos para pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header-container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-logo {
+        margin-right: 20px;
+    }
+
+    .header-nav {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-nav ul {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-nav li {
+        margin-right: 20px;
+    }
+
+    .header-buttons {
+        margin-left: 20px;
+    }
+
+    .main-content {
+        padding: 40px;
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1025px) {
+    .header-container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-logo {
+        margin-right: 40px;
+    }
+
+    .header-nav {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-nav ul {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-nav li {
+        margin-right: 40px;
+    }
+
+    .header-buttons {
+        margin-left: 40px;
+    }
+
+    .main-content {
+        padding: 60px;
+    }
+}

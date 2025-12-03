@@ -1,0 +1,63 @@
+:root {
+  /* Brand Colors */
+  --color-primary: #C4A661;        /* Oro azteca */
+  --color-secondary: #1A1A1A;      /* Casi negro */
+  --color-tertiary: #949189;       /* Gris */ /*NUEVO*/
+  --color-background: #FFFFFF;     /* blanco */
+  --color-dark: #000000;          /* negro puro */
+  --color-accent: #007BFF;         /* celeste */ /*NUEVO*/
+  
+  /*opacidad*/
+  --color-primary-1: rgba(196, 166, 97, 0.5);        /* Oro azteca con 50% de opacidad */
+  --color-secondary-1: rgba(26, 26, 26, 0.5);         /* Casi negro con 50% de opacidad */
+  --color-secondary-2: rgba(26, 26, 26, 0.8);
+  --color-tertiary-1: rgba(148, 145, 137, 0.5);       /* Gris con 50% de opacidad */
+  --color-tertiary-2: rgba(148, 145, 137, 0.8);
+  --color-background-1: rgba(255, 255, 255, 0.5);     /* Blanco con 50% de opacidad */
+  --color-background-2: rgba(255, 255, 255, 0.8);     /* Blanco con 50% de opacidad */
+
+  --color-dark-1: rgba(0, 0, 0, 0.5);                  /* Negro puro con 50% de opacidad */
+  --color-dark-2: rgba(0, 0, 0, 0.8);                  /* Negro puro con 50% de opacidad */
+  
+  --color-accent-1: rgba(0, 123, 255, 0.5);            /* Azul acento con 50% de opacidad */
+
+  /* Text Colors */
+  --color-text: #1A1A1A; /* Casi negro */
+  --color-text-light: #666666; /*Gris granito*/
+  --color-text-inverse: #FFFFFF; /*blanco*/
+  
+  /* UI Colors */
+  --color-border: #E5E5E5; /*platino*/
+  --color-overlay: rgba(0, 0, 0, 0.5); /*negro puro*/
+  --color-success: #4A8B4A; /*	Verde Medio*/
+  --color-error: #8B4A4A; /*Cordobés*/
+  
+  /* Colores adicionales */
+  --color-accent-1: #2C3E50;       /* Azul Pizarra Oscuro */
+  --color-accent-2: #34495E;       /* Azul Pizarra */
+  --color-accent-3: #7D6608;       /* Marrón Dorado */
+  --color-accent-4: #B7950B;       /* Oro Oscuro */
+  --color-accent-5: #D5D8DC;       /* Gris Claro */
+  --color-accent-6: #566573;       /* Gris Azulado */
+
+  /* Variaciones de los colores principales */
+  --color-primary-light: #D4BC85;  /* Oro Claro */
+  --color-primary-dark: #A38A4D;   /* Oro Oscuro */
+  --color-secondary-light: #4A4A4A; /* Gris Oscuro */
+  --color-tertiary-light: #A8A5A0; /* 	Plata rápida */
+  --color-tertiary-dark: #807D77;  /* gris */
+  
+
+  
+  /* sombras */
+  --shadow-sm-black: 0 2px 4px rgba(0, 0, 0, 0.1); /*pequeña intensidad*/
+  --shadow-sm-white: 0 2px 4px rgba(255, 255, 255, 0.6); /*pequeña intensidad*/
+
+  --shadow-md-bl-black: 0 4px 6px rgba(0, 0, 0, 0.1); /*intensidad moderada*/
+  --shadow-md-bl-white: 0 4px 6px rgba(255, 255, 255, 0.6); /*intensidad moderada*/
+
+  --shadow-lg-black: 0 10px 15px rgba(0, 0, 0, 0.6); /*alta intensidad*/
+  --shadow-lg-white: 0 10px 15px rgba(255, 255, 255, 0.6); /*alta intensidad*/
+}
+  
+  

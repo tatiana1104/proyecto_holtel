@@ -1,0 +1,125 @@
+@import url(colores.css);
+
+#time {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 20px; /* Distancia desde la parte superior */
+    left: 20px; /* Distancia desde la izquierda */
+    z-index: 1; /* Asegurarse de que el reloj esté encima de otros elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    
+    #time .circle {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    
+    #time .circle svg {
+    position: relative;
+    transform: rotate(270deg);
+    }
+    
+    #time .circle:nth-child(1) svg {
+    width: 250px;
+    height: 250px;
+    }
+    
+    #time .circle:nth-child(2) svg {
+    width: 210px;
+    height: 210px;
+    }
+    
+    #time .circle:nth-child(3) svg {
+    width: 170px;
+    height: 170px;
+    }
+    
+    /*circulos*/
+    #time .circle svg circle {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke: var( --color-primary-dark);
+    stroke-width: 5;
+    transform: translate(5px, 5px);
+    opacity: 0.25;
+    }
+    
+    #time .circle:nth-child(1) svg circle {
+    stroke-dasharray: 760;
+    stroke-dashoffset: 760;
+    }
+    
+    #time .circle:nth-child(2) svg circle {
+    stroke-dasharray: 630;
+    stroke-dashoffset: 630;
+    }
+    
+    #time .circle:nth-child(3) svg circle {
+    stroke-dasharray: 510;
+    stroke-dashoffset: 510;
+    }
+    
+    /*puntos*/
+    .dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 10;
+    }
+    
+    /*puntos*/
+    .dots::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    width: 15px;
+    height: 15px;
+    background: var(--color-primary-dark); /*color de los puntos*/
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--color-primary-light),
+        0 0 40px var(--color-primary-light),
+        0 0 60px var(--color-primary-light),
+        0 0 80px var(--color-primary-light);
+    }
+    
+    .timeBx {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: consolas, monospace;
+    gap: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    }
+    
+    .timeBx #hours::after,
+    .timeBx #minutes::after {
+    content: ':';
+    position: absolute;
+    }
+    
+    /*numeros*/
+    .timeBx div {
+    color: var(--color-primary-dark);
+    text-shadow: 0 0 10px var(--color-primary-light),
+        0 0 20px var(--color-primary-light);
+    }
+    
+    .ap {
+    position: absolute;
+    transform: translateY(-15px);
+    font-size: 0.5em;
+    right: 56px;
+    }

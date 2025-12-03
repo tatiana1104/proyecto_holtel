@@ -1,0 +1,85 @@
+@import url(colores.css);
+
+.header-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    height:100px;
+    width:100%;
+    background-color: var(--color-secondary);
+    color: var(--color-background);
+    z-index: 1000;
+    box-shadow: var(--shadow-lg-black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo{
+    height:100px;
+    width:100px
+}
+
+.header-nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-nav li {
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+}
+
+.header-nav li .icon {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.header-nav li a {
+    color: var(--color-background);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.header-nav li a:hover {
+    color: var(--color-primary);
+}
+
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.header-buttons .icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--color-secondary);
+} 

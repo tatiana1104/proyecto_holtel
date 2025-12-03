@@ -1,0 +1,35 @@
+/*@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");*/
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
+
+
+.fas, .far {
+    color: #C4A661; /* Cambia el color del icono */
+    padding: 5px;
+    font-size: 24px;
+    stroke-width: 2;
+}
+
+/*https://fontawesome.com/v6/search?o=r&m=free*/ 
+
+/* Definición de fuentes
+fa-brands-400: Esta fuente se utiliza para los iconos de marcas (como Facebook, Twitter, etc.).
+fa-regular-400: Esta fuente se utiliza para los iconos regulares (como los iconos de navegación, etc.).
+fa-solid-900: Esta fuente se utiliza para los iconos sólidos (como los iconos de botones, etc.).
+
+Propiedades de fuente
+font-style: El estilo de la fuente (normal, italic, etc.).
+font-weight: El peso de la fuente (400, 900, etc.).
+font-display: La forma en que se muestra la fuente (block, inline, etc.).
+src: La ubicación de la fuente (un archivo EOT, WOFF2, WOFF, TTF o SVG).
+
+Clases de fuente
+
+.fa --> el estilo básico
+.fa-brands --> estilo se utiliza para iconos de marcas y logos de empresas
+.fa-regular --> se utiliza para iconos regulares que no son de marcas ni logos. Se utiliza para iconos como flechas, estrellas, corazones, etc.
+.fa-solid --> se utiliza para iconos regulares que no son de marcas ni logos. Se utiliza para iconos como flechas, estrellas, corazones, etc.
+.fab --> se utiliza para iconos de marcas y logos de empresas que tienen un estilo más moderno y minimalista.
+.far --> se utiliza para iconos regulares que tienen un estilo más ligero y minimalista
+.fas --> se utiliza para iconos sólidos que tienen un estilo más moderno y minimalista

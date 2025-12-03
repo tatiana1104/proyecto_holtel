@@ -1,0 +1,107 @@
+#eventos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background-2);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.evento-card {
+    background-color: var(--color-background);
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.evento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.evento-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.evento-info {
+    padding: 20px;
+}
+
+.evento-info h3 {
+    font-size: 20px;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.evento-fecha {
+    font-size: 14px;
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+}
+
+.evento-descripcion {
+    font-size: 14px;
+    color: var(--color-text);
+    margin-bottom: 15px;
+}
+
+.evento-btn {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.evento-btn:hover {
+    background-color: var(--color-secondary);
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .event-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1025px) {
+    .events-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .event-card {
+        margin-bottom: 20px;
+    }
+}

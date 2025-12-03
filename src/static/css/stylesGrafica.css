@@ -1,0 +1,36 @@
+/* stylesGrafica.css */
+/* stylesGrafica.css */
+
+/*canvas {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* Centrar el canvas */
+    /*border-radius: 5px; /* Bordes redondeados */
+    /*background-color: white; /* Fondo blanco para el canvas */
+/*}*/
+
+#grafico{
+    padding: 30px;
+    text-align: center;
+    color: var(--color-accent-3);
+}
+
+.grafico-container {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    background-color: var(--color-background);
+
+}
+
+.grafico-container h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--color-accent-3);
+}
+
+canvas {
+    margin: 20px 0;
+    width:400px; 
+    height:200px
+}

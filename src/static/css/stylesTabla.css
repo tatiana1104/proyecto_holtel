@@ -1,0 +1,84 @@
+@import url(colores.css);
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 30px;
+    margin-top: 20px;
+    background-color: var(--color-background-2);
+    box-shadow: var( --shadow-md-bl-black);
+    border-radius: 8px;
+    overflow: hidden; /* Para bordes redondeados */
+    overflow-x: auto; /* Habilitar desplazamiento horizontal */
+    display: block; /* Hacer que la tabla sea un bloque para el desplazamiento */
+    table-layout: auto;
+}
+
+thead {
+    background-color: var(--color-dark); /* Color de fondo para el encabezado */
+    color: var(--color-text-inverse); /* Color del texto del encabezado */
+}
+
+
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #007BFF; /* Borde inferior */
+}
+
+tbody tr:hover {
+    background-color: #c9e2fc; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilos para la barra de desplazamiento */
+.custom-table::-webkit-scrollbar {
+    height: 8px; /* Altura de la barra de desplazamiento */
+}
+
+.custom-table::-webkit-scrollbar-thumb {
+    background-color: #007BFF; /* Color del pulgar de la barra de desplazamiento */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+.custom-table::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color de la pista de la barra de desplazamiento */
+}
+
+/*botones*/
+.btn {
+    margin: 5px; /* Espaciado entre botones */
+    margin: 5px; /* Espaciado entre botones */
+    border-radius: 4px; /* Bordes redondeados para botones */
+    padding: 8px 12px; /* Espaciado interno para botones */
+    font-size: 14px; /* Tamaño de fuente para botones */
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Color de fondo para botón de modificar */
+    color: #212529; /* Color del texto para botón de modificar */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Color de fondo para botón de eliminar */
+    color: white; /* Color del texto para botón de eliminar */
+}
+
+.btn:hover {
+    opacity: 0.9; /* Efecto de hover para botones */
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+}
+
+
