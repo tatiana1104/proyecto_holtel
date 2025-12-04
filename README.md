@@ -24,19 +24,15 @@ Construido con las herramientas y tecnologías:
 ----
 # 📚 Índice
 
-1. [Descripción del Proyecto](#descripción-del-proyecto)  
-2. [Características Principales](#características-principales)  
-3. [Capturas de Pantalla](#📸-capturas-de-pantalla)  
-4. [GIF de Demostración](#🎬-gif-de-demostración)  
-5. [Estructura del Proyecto](#estructura-del-proyecto)  
-6. [Tecnologías Utilizadas](#tecnologías-utilizadas)  
-7. [Comparación de Tecnologías](#comparación-de-tecnologías)  
-8. [Instalación](#instalación)  
-9. [Uso](#uso)  
-10. [Documentación API](#documentación-api)  
-11. [Roadmap](#🗺-roadmap)  
-12. [Changelog](#changelog)  
-13. [Licencia](#licencia)
+1. [Descripción del Proyecto]  
+2. [Estructura del Proyecto]
+3. [Tecnologías Utilizadas]
+4. [Comparación de Tecnologías]
+5. [Instalación]
+6. [Instalación Avanzada]
+7. [Uso]
+8. [Roadmap]
+9. [Licencia]
 -----
 ## 📝 Descripción del Proyecto
 
@@ -76,13 +72,12 @@ PROYECTO_HOTEL/
 -----
 ## 🛠 Tecnologías Utilizadas
 
-```md
-- Python 3.x  
-- (Opcional) Framework web — Flask  
-- HTML / CSS / JavaScript (si usas frontend)  
-- Base de datos SQL (p. ej. MySQL, SQLite…)  
-- Markdown (para documentación)  
-```
+-    Python 3.x
+-    (Opcional) Framework web — Flask
+-    HTML / CSS / JavaScript (si usas frontend)
+-    Base de datos SQL (p. ej. MySQL, SQLite…)
+-    Markdown (para documentación)  
+
 ----
 ## ⚖️ Comparación de Tecnologías
 | Tecnología | Ventajas | Limitaciones / Consideraciones |
